@@ -1,0 +1,28 @@
+<script>
+$(function(){
+
+    // Cache the fields
+    var url = $('#url'), host = $('#host'), path = $('#path'), 
+        query = $('#query'), hash = $('#hash');
+
+    // Listen for the input event and update the fields
+
+    url.on('input', function(){
+        var a = $('<a>', { href:url.val() } )[0];
+
+        host.val(a.hostname);
+        path.val(a.pathname);
+        query.val(a.search);
+        hash.val(a.hash);
+		
+		alert(host.val);
+		alert(path.val);
+    });
+
+    // Set a default URL 
+    url.val('http://tutorialzine.com/2013/07/quick-tip-parse-urls/?key=value#comments');
+
+    // Trigger the input event
+    url.trigger('input');
+});
+</script>
